@@ -1,0 +1,261 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KVFFIC 2025 Unified</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(120deg, #0f0f0f, #1c1c1c);
+      color: #00ffcc;
+      text-align: center;
+    }
+
+    h1, h2 {
+      text-shadow: 0 0 10px #00ffcc;
+    }
+
+    /* Navigation */
+    nav {
+      background: #000;
+      padding: 10px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-title {
+      font-size: 18px;
+      color: #00ffc8;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 28px;
+      background: none;
+      border: none;
+      color: #00ffc8;
+      cursor: pointer;
+    }
+
+    .menu-buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .menu-buttons button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 10px;
+    }
+
+    .button, .btn {
+      padding: 15px 40px;
+      background: #00ffc8;
+      color: #000;
+      font-size: 20px;
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 0 25px #00ffc8;
+      cursor: pointer;
+      transition: 0.3s;
+      margin: 10px;
+    }
+
+    .button:hover, .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 40px #00ffc8;
+    }
+
+    .section {
+      display: none;
+      padding: 50px 20px;
+    }
+
+    .active {
+      display: block;
+    }
+
+    .form-container, .info, .caution {
+      background: #1a1a1a;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px #00ffcc;
+      margin: 20px auto;
+      width: 90%;
+      max-width: 600px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      background: #0f0f0f;
+      border: 2px solid #00ffcc;
+      border-radius: 8px;
+      color: #00ffcc;
+      font-size: 16px;
+      outline: none;
+    }
+
+    input[type="submit"] {
+      background: #00ffcc;
+      color: #0f0f0f;
+      font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .menu-buttons {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        background: #000;
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        z-index: 998;
+        padding: 10px;
+      }
+
+      .menu-buttons.active {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-title">KVFFIC 2025</div>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    <div class="menu-buttons" id="navMenu">
+      <button class="button" onclick="showSection('welcome'); toggleMenu()">Welcome</button>
+      <button class="button" onclick="showSection('caution'); toggleMenu()">Caution</button>
+      <button class="button" onclick="showSection('register'); toggleMenu()">Register</button>
+      <button class="button" onclick="showSection('event'); toggleMenu()">Event Info</button>
+    </div>
+  </nav>
+
+  <div id="welcome" class="section active">
+    <h1>KVFFIC 2025</h1>
+    <p>Welcome to the ultimate gaming experience. Prepare to battle!</p>
+    <p>KVS CS CUP S1 (2025)</p>
+    <button class="btn" onclick="showSection('caution')">Start Registration</button>
+  </div>
+
+  <div id="caution" class="section">
+    <h1>CAUTION</h1>
+    <div class="caution">1. Only students of kendriya vidyalaya are applicable for participation.</div>
+    <div class="caution">2. Fake info leads to disqualification.</div>
+    <div class="caution">3. Players must enter the same squad name while submitting the registration form and can only play with the IDs given in the registration form.</div>
+    <div class="caution">4. The reward of ₹400 will be equally distributed among the 4 members of the winner squad.</div>
+    <div class="caution">5. The entry fee for event participation is ₹10 only and is compulsory. The payment link or QR will be provided on same IG account. For offline payment DM on "kvffic" official IG account.</div>
+    <div class="caution">6. The first 52 players who fulfill all the conditions and submit the fees will be successfully verified.</div>
+    <div class="caution">7. Kindly follow the official IG account - KVFFIC and official YouTube account - KVFFIC OFFICIAL.</div>
+    <button class="btn" onclick="showSection('register')">Continue to Registration</button>
+  </div>
+
+  <div id="register" class="section">
+    <div class="form-container">
+      <h2>Squad Registration</h2>
+      <form onsubmit="saveData(event)">
+        <input type="number" name="uid" placeholder="Enter FF UID" required />
+        <input type="text" name="name" placeholder="Enter Name" required />
+        <textarea name="address" rows="3" placeholder="Enter School and Class" required></textarea>
+        <input type="text" name="age" placeholder="Enter Insta ID" required />
+        <input type="text" name="squad" placeholder="Enter Squad Name" required />
+        <input type="text" name="phone" placeholder="Enter Payment mode" required />
+        <input type="submit" value="Register Now" />
+      </form>
+    </div>
+  </div>
+
+  <div id="event" class="section">
+    <h1>Welcome to KVFFIC 2025</h1>
+    <div class="info">
+      <h2>Event Details:</h2>
+      <p><strong>Event:</strong> KVFFIC 2025</p>
+      <p><strong>Date:</strong> 25 August 2025</p>
+      <p><strong>Type:</strong> Online</p>
+      <p><strong>Game:</strong> Free Fire</p>
+      <p><strong>Updates:</strong> Follow <b>@kvffic</b> on Instagram</p>
+      <p><strong>Queries:</strong> DM the same Instagram handle</p>
+      <p><strong>Live Stream:</strong> Noti Gamerz & KVFFIC OFFICIAL YouTube Channel</p>
+    </div>
+    <div class="info">
+      <h2>Your Submitted Info:</h2>
+      <p><b>UID:</b> <span id="d_uid"></span></p>
+      <p><b>Name:</b> <span id="d_name"></span></p>
+      <p><b>Address:</b> <span id="d_address"></span></p>
+      <p><b>Age:</b> <span id="d_age"></span></p>
+      <p><b>Squad:</b> <span id="d_squad"></span></p>
+      <p><b>Phone:</b> <span id="d_phone"></span></p>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000, once: true });
+
+    function showSection(id) {
+      document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+
+    function toggleMenu(forceClose = false) {
+      const menu = document.getElementById('navMenu');
+      if (forceClose) {
+        menu.classList.remove('active');
+      } else {
+        menu.classList.toggle('active');
+      }
+    }
+
+    function saveData(event) {
+      event.preventDefault();
+      const form = event.target;
+      localStorage.setItem("uid", form.uid.value);
+      localStorage.setItem("name", form.name.value);
+      localStorage.setItem("address", form.address.value);
+      localStorage.setItem("age", form.age.value);
+      localStorage.setItem("squad", form.squad.value);
+      localStorage.setItem("phone", form.phone.value);
+      showSection('event');
+      displayData();
+    }
+
+    function displayData() {
+      document.getElementById('d_uid').innerText = localStorage.getItem("uid") || "";
+      document.getElementById('d_name').innerText = localStorage.getItem("name") || "";
+      document.getElementById('d_address').innerText = localStorage.getItem("address") || "";
+      document.getElementById('d_age').innerText = localStorage.getItem("age") || "";
+      document.getElementById('d_squad').innerText = localStorage.getItem("squad") || "";
+      document.getElementById('d_phone').innerText = localStorage.getItem("phone") || "";
+    }
+
+    window.onload = () => {
+      displayData();
+
+      const menuButtons = document.querySelectorAll('#navMenu button');
+      menuButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const target = button.textContent.toLowerCase().replace(/\s+/g, '');
+          showSection(target);
+          toggleMenu(true);
+        });
+      });
+    };
+  </script>
