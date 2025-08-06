@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +20,6 @@
       text-shadow: 0 0 10px #00ffcc;
     }
 
-    /* Navigation */
     nav {
       background: #000;
       padding: 10px 20px;
@@ -158,7 +156,7 @@
 
   <div id="caution" class="section">
     <h1>CAUTION</h1>
-    <div class="caution">1. Only students of kendriya vidyalaya are applicable for participation.</div>
+    <div class="caution">1. Only students of Kendriya Vidyalaya are applicable for participation.</div>
     <div class="caution">2. Fake info leads to disqualification.</div>
     <div class="caution">3. Players must enter the same squad name while submitting the registration form and can only play with the IDs given in the registration form.</div>
     <div class="caution">4. The reward of ₹400 will be equally distributed among the 4 members of the winner squad.</div>
@@ -171,13 +169,15 @@
   <div id="register" class="section">
     <div class="form-container">
       <h2>Squad Registration</h2>
-      <form onsubmit="saveData(event)">
-        <input type="number" name="uid" placeholder="Enter FF UID" required />
-        <input type="text" name="name" placeholder="Enter Name" required />
-        <textarea name="address" rows="3" placeholder="Enter School and Class" required></textarea>
-        <input type="text" name="age" placeholder="Enter Insta ID" required />
-        <input type="text" name="squad" placeholder="Enter Squad Name" required />
-        <input type="text" name="phone" placeholder="Enter Payment mode" required />
+      <form action="https://formsubmit.co/kvffic.official@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New KVFFIC Registration!" />
+        <input type="number" name="FF UID" placeholder="Enter FF UID" required />
+        <input type="text" name="Name" placeholder="Enter Name" required />
+        <textarea name="School & Class" rows="3" placeholder="Enter School and Class" required></textarea>
+        <input type="text" name="Insta ID" placeholder="Enter Insta ID" required />
+        <input type="text" name="Squad Name" placeholder="Enter Squad Name" required />
+        <input type="text" name="Payment Mode" placeholder="Enter Payment mode" required />
+        <input type="hidden" name="_next" value="https://kvffic.github.io/KVFFIC.COM/thankyou.html" />
         <input type="submit" value="Register Now" />
       </form>
     </div>
@@ -194,15 +194,6 @@
       <p><strong>Updates:</strong> Follow <b>@kvffic</b> on Instagram</p>
       <p><strong>Queries:</strong> DM the same Instagram handle</p>
       <p><strong>Live Stream:</strong> Noti Gamerz & KVFFIC OFFICIAL YouTube Channel</p>
-    </div>
-    <div class="info">
-      <h2>Your Submitted Info:</h2>
-      <p><b>UID:</b> <span id="d_uid"></span></p>
-      <p><b>Name:</b> <span id="d_name"></span></p>
-      <p><b>Address:</b> <span id="d_address"></span></p>
-      <p><b>Age:</b> <span id="d_age"></span></p>
-      <p><b>Squad:</b> <span id="d_squad"></span></p>
-      <p><b>Phone:</b> <span id="d_phone"></span></p>
     </div>
   </div>
 
@@ -224,31 +215,7 @@
       }
     }
 
-    function saveData(event) {
-      event.preventDefault();
-      const form = event.target;
-      localStorage.setItem("uid", form.uid.value);
-      localStorage.setItem("name", form.name.value);
-      localStorage.setItem("address", form.address.value);
-      localStorage.setItem("age", form.age.value);
-      localStorage.setItem("squad", form.squad.value);
-      localStorage.setItem("phone", form.phone.value);
-      showSection('event');
-      displayData();
-    }
-
-    function displayData() {
-      document.getElementById('d_uid').innerText = localStorage.getItem("uid") || "";
-      document.getElementById('d_name').innerText = localStorage.getItem("name") || "";
-      document.getElementById('d_address').innerText = localStorage.getItem("address") || "";
-      document.getElementById('d_age').innerText = localStorage.getItem("age") || "";
-      document.getElementById('d_squad').innerText = localStorage.getItem("squad") || "";
-      document.getElementById('d_phone').innerText = localStorage.getItem("phone") || "";
-    }
-
     window.onload = () => {
-      displayData();
-
       const menuButtons = document.querySelectorAll('#navMenu button');
       menuButtons.forEach(button => {
         button.addEventListener('click', () => {
@@ -259,3 +226,5 @@
       });
     };
   </script>
+</body>
+</html>
